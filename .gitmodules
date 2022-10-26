@@ -1,0 +1,3 @@
+[submodule "jtrack-dashboard2"]
+	path = jtrack-dashboard2
+	url = git@jugit.fz-juelich.de:jutrack/jtrack-dashboard2.git
