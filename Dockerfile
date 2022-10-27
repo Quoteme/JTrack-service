@@ -1,15 +1,12 @@
-FROM ubuntu 
+FROM seth0r/apache-wsgi
 RUN apt-get update \
   && apt-get install -y \
     apache2 \
     apache2-dev \
     apache2-utils \
     ntpdate \
-    libapache2-mod-wsgi-py3 \
-    python3 python3-pip \
   && apt autoremove \
-  && apt clean \
-  && a2enmod wsgi
+  && apt clean
   # && a2enconf mod-wsgi
 # RUN apt-get update 
 # RUN apt-get install apache2 
@@ -28,7 +25,10 @@ COPY ./jtrack-dashboard2 /srv/remsys.ai/dashboard
 
 COPY ./jutrackService.wsgi /var/www/remsys.ai/service/jutrackService.wsgi
 COPY ./jutrack_fetch_resources.wsgi /var/www/remsys.ai/service/jutrack_fetch_resources.wsgi
+COPY ./JTrack-dashboard /var/www/remsys.ai/www/dashboard
 # COPY ./jutrack_dashboard_worker.py /var/www/remsys.ai/www/dashboard/jutrack_dashboard.wsgi
+
+COPY ./test.wsgi /var/www/remsys.ai/www/test.wsgi
 
 EXPOSE 80
 CMD ["apache2ctl", "-D", "FOREGROUND"]
