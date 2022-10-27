@@ -21,6 +21,7 @@ RUN apt-get update \
 
 
 COPY ./corsano.de.conf /etc/apache2/sites-enabled/corsano.de.conf
+RUN rm /etc/apache2/sites-enabled/000-default.conf
 COPY ./jtrack-dashboard2 /srv/remsys.ai/dashboard
 
 # COPY ./jutrackService.wsgi /var/www/remsys.ai/service/jutrackService.wsgi
