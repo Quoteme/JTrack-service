@@ -4,11 +4,9 @@ RUN apt-get update \
     apache2 \
     apache2-dev \
     apache2-utils \
-    libapache2-mpm-itk \
     ntpdate \
     python3 python3-pip\
   && pip install mod_wsgi\
-  && a2enmod mpm_itk \
   && apt autoremove \
   && apt clean 
   # && a2enconf mod-wsgi
