@@ -1,10 +1,10 @@
-FROM centos:7
+FROM almalinux:8.5
 
 # Install Apache
 RUN yum -y update && \
     yum -y install httpd httpd-tools && \
     yum -y install python3 && \
-    yum -y install mod_wsgi && \
+    yum -y install python3-mod_wsgi && \
     yum -y install python3-pip
 
 RUN pip3 install --upgrade pip \
