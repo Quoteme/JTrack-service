@@ -20,6 +20,7 @@ RUN apt-get update \
 # RUN apt clean 
 # RUN apt clean 
 
+RUN groupadd -g 1000 dashboardgroup
 
 COPY ./corsano.de.conf /etc/apache2/sites-enabled/corsano.de.conf
 RUN rm /etc/apache2/sites-enabled/000-default.conf
@@ -27,7 +28,7 @@ COPY ./jtrack-dashboard2 /srv/remsys.ai/dashboard
 
 COPY ./jutrackService.wsgi /var/www/remsys.ai/service/jutrackService.wsgi
 COPY ./jutrack_fetch_resources.wsgi /var/www/remsys.ai/service/jutrack_fetch_resources.wsgi
-COPY ./jutrack_dashboard_worker.py /var/www/remsys.ai/www/dashboard/jutrack_dashboard.wsgi
+# COPY ./jutrack_dashboard_worker.py /var/www/remsys.ai/www/dashboard/jutrack_dashboard.wsgi
 
 EXPOSE 80
 CMD ["apache2ctl", "-D", "FOREGROUND"]
