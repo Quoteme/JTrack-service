@@ -20,8 +20,8 @@ RUN apt-get update \
 # RUN apt clean 
 
 
-# COPY ./corsano.de.conf /usr/local/apache2/conf/httpd.conf
-# COPY ./jtrack-dashboard2 /srv/remsys.ai/dashboard
+COPY ./corsano.de.conf /usr/local/apache2/conf/httpd.conf
+COPY ./jtrack-dashboard2 /srv/remsys.ai/dashboard
 
 # COPY ./jutrackService.wsgi /var/www/remsys.ai/service/jutrackService.wsgi
 # COPY ./jutrack_fetch_resources.wsgi /var/www/remsys.ai/service/jutrack_fetch_resources.wsgi
