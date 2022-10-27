@@ -1,29 +1,34 @@
-FROM ubuntu
-RUN apt-get update \
-  && apt-get install -y \
-    apache2 \
-    apache2-dev \
-    apache2-utils \
-    ntpdate \
-    libapache2-mod-wsgi-py3 \
-    python3 python3-pip \
-  && apt autoremove \
-  && apt clean \
-  && a2enmod wsgi
-  # && a2enconf mod-wsgi
-# RUN apt-get update 
-# RUN apt-get install apache2 
-# RUN apt install apache2-utils
-# RUN apt install libexpat1 ssl-cert python
-# RUN apt install libapache2-mod-wsgi
-# RUN systemctl restart apache2
-# RUN apt clean 
-# RUN apt clean 
+FROM centos:7
 
-RUN groupadd -g 1000 dashboardgroup
+# Install Apache
+RUN yum -y update && \
+    yum -y install httpd httpd-tools && \
+    yum -y install python3 && \
+    yum -y install mod_wsgi
 
-COPY ./corsano.de.conf /etc/apache2/sites-enabled/corsano.de.conf
-RUN rm /etc/apache2/sites-enabled/000-default.conf
+# RUN pip3 install --upgrade pip \
+#   && pip3 install fpdf \
+#   && pip3 install qrcode \
+#   && pip3 install pillow \
+#   && pip3 install pandas \
+#   && pip3 install dash
+
+RUN useradd www-data \
+ && groupadd -g 10000 dashboardgroup
+
+# Update Apache Configuration
+# RUN echo "" >> /etc/httpd/conf.d/example.conf \
+#  && echo "WSGIScriptAlias / /var/www/html/wsgi.py" >> /etc/httpd/conf.d/example.conf \
+#  && echo "WSGIScriptAlias /test /var/www/remsys.ai/www/test.wsgi" >> /etc/httpd/conf.d/example.conf \
+#  && echo "<Directory /var/www/html>" >> /etc/httpd/conf.d/example.conf \
+#  && echo "<Files wsgi.py>" >> /etc/httpd/conf.d/example.conf \
+#  && echo "Require all granted" >> /etc/httpd/conf.d/example.conf \
+#  && echo "</Files>" >> /etc/httpd/conf.d/example.conf \
+#  && echo "</Directory>" >> /etc/httpd/conf.d/example.conf
+
+COPY ./corsano.de.conf /etc/httpd/conf.d/corsano.de.conf
+
+# COPY ./corsano.de.conf /etc/httpd/conf/httpd.conf
 COPY ./jtrack-dashboard2 /srv/remsys.ai/dashboard
 
 COPY ./jutrackService.wsgi /var/www/remsys.ai/service/jutrackService.wsgi
@@ -32,12 +37,7 @@ COPY ./JTrack-dashboard /var/www/remsys.ai/www/dashboard
 # COPY ./jutrack_dashboard_worker.py /var/www/remsys.ai/www/dashboard/jutrack_dashboard.wsgi
 
 COPY ./test.wsgi /var/www/remsys.ai/www/test.wsgi
+COPY ./test.wsgi /var/www/html/wsgi.py
 
 EXPOSE 80
-CMD ["apache2ctl", "-D", "FOREGROUND"]
-
-# RUN apt-get update&& \
-#     apt-get install\
-#     apache2 libapache2-mod-wsgi-py3 && \
-#     a2enmod wsgi && \
-#     service apache2 restart
+CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
