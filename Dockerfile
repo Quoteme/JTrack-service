@@ -1,12 +1,15 @@
-FROM seth0r/apache-wsgi
+FROM ubuntu
 RUN apt-get update \
   && apt-get install -y \
     apache2 \
     apache2-dev \
     apache2-utils \
     ntpdate \
+    libapache2-mod-wsgi-py3 \
+    python3 python3-pip \
   && apt autoremove \
-  && apt clean
+  && apt clean \
+  && a2enmod wsgi
   # && a2enconf mod-wsgi
 # RUN apt-get update 
 # RUN apt-get install apache2 
