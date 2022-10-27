@@ -36,7 +36,7 @@ try:
     content = {}
 
     uid = pwd.getpwnam("www-data").pw_uid
-    s_uid = pwd.getpwnam("jfischer").pw_uid
+    s_uid = pwd.getpwnam("lhappel").pw_uid
     gid = 3619
 
     # ----------------------------------------VALIDATION-------------------------------------------------

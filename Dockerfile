@@ -15,6 +15,7 @@ RUN pip3 install --upgrade pip \
   && pip3 install dash
 
 RUN useradd www-data \
+ && useradd lhappel \
  && groupadd -g 10000 dashboardgroup
 
 # Update Apache Configuration
