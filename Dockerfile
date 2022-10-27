@@ -19,9 +19,6 @@ RUN useradd www-data \
  && useradd lhappel \
  && groupadd -g 10000 dashboardgroup
 
-RUN chown -R www-data:dashboardgroup /var/www/remsys.ai/www \
- && chmod -R u=rwx,g=rx,o-r /var/www/remsys.ai/www
-
 # Update Apache Configuration
 # RUN echo "" >> /etc/httpd/conf.d/example.conf \
 #  && echo "WSGIScriptAlias / /var/www/html/wsgi.py" >> /etc/httpd/conf.d/example.conf \
@@ -46,6 +43,9 @@ COPY ./jutrack_dashboard_worker.py /var/www/remsys.ai/www/dashboard/
 COPY ./jutrackService.wsgi /var/www/remsys.ai/service/jutrackService.wsgi
 
 COPY ./JTrack-dashboard/security/passwd.csv /
+
+RUN chown -R www-data:dashboardgroup /var/www/remsys.ai/www \
+ && chmod -R u=rwx,g=rx,o-r /var/www/remsys.ai/www
 
 ENV PYTHONPATH=/var/www/remsys.ai/www/dashboard
 
