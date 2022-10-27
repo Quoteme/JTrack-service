@@ -12,11 +12,15 @@ RUN pip3 install --upgrade pip \
   && pip3 install qrcode \
   && pip3 install pillow \
   && pip3 install pandas \
-  && pip3 install dash
+  && pip3 install dash \
+  && pip3 install requests
 
 RUN useradd www-data \
  && useradd lhappel \
  && groupadd -g 10000 dashboardgroup
+
+RUN chown -R www-data:dashboardgroup /var/www/remsys.ai/www \
+ && chmod -R u=rwx,g=rx,o-r /var/www/remsys.ai/www
 
 # Update Apache Configuration
 # RUN echo "" >> /etc/httpd/conf.d/example.conf \
@@ -41,9 +45,9 @@ COPY ./JTrack-dashboard /var/www/remsys.ai/www/dashboard
 COPY ./jutrack_dashboard_worker.py /var/www/remsys.ai/www/dashboard/
 COPY ./jutrackService.wsgi /var/www/remsys.ai/service/jutrackService.wsgi
 
-ENV PYTHONPATH=/var/www/remsys.ai/www/dashboard
+COPY ./JTrack-dashboard/security/passwd.csv /
 
-RUN chmod g+w /var/www/remsys.ai/www/dashboard
+ENV PYTHONPATH=/var/www/remsys.ai/www/dashboard
 
 EXPOSE 80
 CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
