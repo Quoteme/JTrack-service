@@ -45,7 +45,9 @@ COPY ./jutrackService.wsgi /var/www/remsys.ai/service/jutrackService.wsgi
 COPY ./JTrack-dashboard/security/passwd.csv /
 
 RUN chown -R www-data:dashboardgroup /var/www/remsys.ai/www \
- && chmod -R u=rwx,g=rx,o-r /var/www/remsys.ai/www
+ && chmod -R u=rwx,g=rx,o-r /var/www/remsys.ai/www \
+ && chown -R www-data:dashboardgroup /mnt \
+ && chmod -R u=rwx,g=rx,o-r /mnt
 
 ENV PYTHONPATH=/var/www/remsys.ai/www/dashboard
 
