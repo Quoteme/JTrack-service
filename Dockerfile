@@ -52,7 +52,9 @@ RUN chown -R www-data:dashboardgroup /var/www/remsys.ai/www \
  && chmod -R a=rwx /mnt
 
 ENV PYTHONPATH=/var/www/remsys.ai/www/dashboard
-ENV SERVER_URL=http://remsys.ai
+ENV SERVER_PROTOCOL=http://
+ENV SERVER_URL=192.168.178.31:8888/
+#ENV SERVER_URL=http://remsys.ai/
 
 EXPOSE 80
 RUN echo "httpd -D FOREGROUND" >> /start.sh && \
