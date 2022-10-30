@@ -5,7 +5,9 @@ RUN yum -y update && \
     yum -y install httpd httpd-tools && \
     yum -y install python3 && \
     yum -y install python3-mod_wsgi && \
-    yum -y install python3-pip
+    yum -y install python3-pip && \
+    yum -y install zip && \
+    yum -y install unzip
 
 RUN pip3 install --upgrade pip \
   && pip3 install fpdf \
