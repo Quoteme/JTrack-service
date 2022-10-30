@@ -57,10 +57,14 @@ ENV SERVER_URL=192.168.178.31:8888/
 #ENV SERVER_URL=http://remsys.ai/
 
 EXPOSE 80
-RUN echo "httpd -D FOREGROUND" >> /start.sh && \
+RUN echo "#!/usr/bin/env bash" >> /start.sh && \
+    echo "httpd -D FOREGROUND &" >> /start.sh && \
+		echo "chmod -R a=rwx /mnt &" >> /start.sh && \
+		echo "chmod -R a=rwx /mnt/jutrack_data/users/ &" >> /start.sh && \
+		echo "echo 'changed permissions successfully' >> serverstart.log &" >> /start.sh && \
 		echo "while true; do" >> /start.sh && \
-		echo "  echo 'running'" >> /start.sh && \
-		echo "  python3 /jutrack_csv_cronjob.py" >> /start.sh && \
+		echo "  echo 'running' &" >> /start.sh && \
+		echo "  python3 /jutrack_csv_cronjob.py &" >> /start.sh && \
 		echo "  sleep 5" >> /start.sh && \
 		echo "done" >> /start.sh && \
 		chmod +x /start.sh
