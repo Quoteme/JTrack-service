@@ -20,6 +20,7 @@ RUN pip3 install --upgrade pip \
 
 RUN useradd www-data \
  && useradd lhappel \
+ && useradd jtrack \
  && groupadd -g 10000 dashboardgroup
 
 # Update Apache Configuration
@@ -40,6 +41,7 @@ COPY ./JTrack-dashboard /srv/remsys.ai/dashboard
 COPY ./jutrack_fetch_resources.wsgi /var/www/remsys.ai/service/jutrack_fetch_resources.wsgi
 COPY ./JTrack-dashboard /var/www/remsys.ai/www/dashboard
 COPY ./jutrack_dashboard_worker.py /var/www/remsys.ai/www/dashboard/
+COPY ./jutrack_csv_cronjob.py /
 COPY ./jutrackService.wsgi /var/www/remsys.ai/service/jutrackService.wsgi
 
 COPY ./JTrack-dashboard/security/passwd.csv /
