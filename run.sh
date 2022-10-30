@@ -1,5 +1,6 @@
 mkdir -p ./jutrack_data/studies
 mkdir -p ./jutrack_data/archive
+mkdir -p ./jutrack_data/users
 chmod a=rwx ./jutrack_data
 
 docker build -t my-apache . && \
