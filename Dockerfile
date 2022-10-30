@@ -34,9 +34,6 @@ COPY ./corsano.de.conf /etc/httpd/conf.d/corsano.de.conf
 # COPY ./corsano.de.conf /etc/httpd/conf/httpd.conf
 COPY ./JTrack-dashboard /srv/remsys.ai/dashboard
 
-COPY ./test.wsgi /var/www/remsys.ai/www/test.wsgi
-COPY ./test.wsgi /var/www/html/wsgi.py
-
 COPY ./jutrack_fetch_resources.wsgi /var/www/remsys.ai/service/jutrack_fetch_resources.wsgi
 COPY ./JTrack-dashboard /var/www/remsys.ai/www/dashboard
 COPY ./jutrack_dashboard_worker.py /var/www/remsys.ai/www/dashboard/
