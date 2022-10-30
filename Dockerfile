@@ -8,6 +8,7 @@ RUN yum -y update && \
     yum -y install python3-pip && \
     yum -y install zip && \
     yum -y install unzip
+    # yum -y install datalad
 
 RUN pip3 install --upgrade pip \
   && pip3 install fpdf \
@@ -49,6 +50,7 @@ RUN chown -R www-data:dashboardgroup /var/www/remsys.ai/www \
  && chmod -R a=rwx /mnt
 
 ENV PYTHONPATH=/var/www/remsys.ai/www/dashboard
+ENV SERVER_URL=http://remsys.ai
 
 EXPOSE 80
 CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
