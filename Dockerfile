@@ -33,6 +33,10 @@ RUN useradd www-data \
 #  && echo "</Files>" >> /etc/httpd/conf.d/example.conf \
 #  && echo "</Directory>" >> /etc/httpd/conf.d/example.conf
 
+# need this for error logs
+RUN yum -y install vim && \
+	ln -sf /se.log /var/log/remsys.ai.error.log
+
 COPY ./corsano.de.conf /etc/httpd/conf.d/corsano.de.conf
 
 # COPY ./corsano.de.conf /etc/httpd/conf/httpd.conf
