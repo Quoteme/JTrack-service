@@ -1,4 +1,6 @@
 mkdir -p ./jutrack_data/studies
+mkdir -p ./jutrack_data/archive
+chmod a=rwx ./jutrack_data
 
 docker build -t my-apache . && \
 docker container run \
