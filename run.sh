@@ -3,6 +3,6 @@ mkdir -p ./jutrack_data/studies
 docker build -t my-apache . && \
 docker container run \
   -itd \
-  --mount src="$(pwd)"/jutrack_data,target=/mnt/jutrack_data/studies,type=bind \
+  --mount src="$(pwd)"/jutrack_data,target=/mnt/jutrack_data,type=bind \
   --name my-running-app \
   -p 8888:80 my-apache
