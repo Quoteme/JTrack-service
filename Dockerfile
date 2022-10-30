@@ -66,6 +66,8 @@ RUN echo "#!/usr/bin/env bash" >> /start.sh && \
     echo "httpd -D FOREGROUND &" >> /start.sh && \
 		echo "chmod -R a=rwx /mnt &" >> /start.sh && \
 		echo "chmod -R a=rwx /mnt/jutrack_data/users/ &" >> /start.sh && \
+		echo "touch /var/www/remsys.ai/service/daily_mail.txt &" >> /start.sh && \
+		echo "chmod -R a=rwx /var/www/remsys.ai/service/daily_mail.txt &" >> /start.sh && \
 		echo "echo 'changed permissions successfully' >> serverstart.log &" >> /start.sh && \
 		echo "while true; do" >> /start.sh && \
 		echo "  echo 'running' &" >> /start.sh && \
