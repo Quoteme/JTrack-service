@@ -50,7 +50,7 @@ do
                     do
                         file_state=($(datalad status ${file}))
                         if [[ ${file_state} =~ untracked.* ]]; then
-                            datalad copy-file ${file} -d jutrack.inm7.de:/data/project/JTrack/Data/Studies_new/${study}/${user}/${device}/${sensor}/
+                            datalad copy-file ${file} -d remsys.ai:/data/project/JTrack/Data/Studies_new/${study}/${user}/${device}/${sensor}/
                         fi
                     done
                     echo "Copied files to juseless"

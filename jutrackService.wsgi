@@ -560,7 +560,7 @@ try:
         date = i.strftime("%Y-%m-%d")
         timestamp = i.strftime("%Y-%m-%dT%H-%M-%S")
 
-        file_name = "/var/www/jutrack.inm7.de/service/daily_mail.txt"
+        file_name = "/var/www/remsys.ai/service/daily_mail.txt"
         # write first line
         if not os.path.isfile(file_name):
             with open(file_name, 'w+') as f:
