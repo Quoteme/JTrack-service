@@ -341,6 +341,9 @@ try:
 
 
     def send_mail(sender, receivers, subject, text):
+        # FIXME: No mails have been set up so far, therefor this function would timeout crashes
+        print("Sending mail has been disabled, but someone requested to send a mail. This needs to be fixed in the future.")
+        return
         mail_to = ",".join(receivers)
         message = 'To: {}\nFrom: {}\nSubject: {}\n\n{}'.format(mail_to, sender, subject, text)
         try:
@@ -562,6 +565,10 @@ try:
 
     # write daily error summary
     def write_output_message(message):
+        # FIXME: Skip writting to e-mail stuff, because this causes crashes
+        print(f"e-mail append: {message}")
+        print("\n")
+        return
         # get date
         i = datetime.datetime.now()
         date = i.strftime("%Y-%m-%d")
