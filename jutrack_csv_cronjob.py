@@ -321,9 +321,9 @@ def write_csv(study_id, csv_data):
                              check_key(data_keys[24], csv_row), check_key(data_keys[25], csv_row),
                              check_key(data_keys[26], csv_row), check_key(data_keys[27], csv_row),  check_key(data_keys[28], csv_row)])
 
-    if os.path.isfile(storage_folder + '/jutrack_dashboard_' + study_id + '.csv'):
-        os.chown(storage_folder + '/jutrack_dashboard_' + study_id + '.csv', uid, gid)
-        os.chmod(storage_folder + '/jutrack_dashboard_' + study_id + '.csv', 0o664)
+    # if os.path.isfile(storage_folder + '/jutrack_dashboard_' + study_id + '.csv'):
+    #     os.chown(storage_folder + '/jutrack_dashboard_' + study_id + '.csv', uid, gid)
+    #     os.chmod(storage_folder + '/jutrack_dashboard_' + study_id + '.csv', 0o664)
 
 
 def check_key(key, data):

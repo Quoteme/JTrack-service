@@ -233,6 +233,8 @@ try:
 
 
     def chgrp(filepath, group_id):
+        # Skip this bullshit
+        return
         user_id = os.stat(filepath).st_uid
         os.chown(filepath, user_id, group_id)
 
