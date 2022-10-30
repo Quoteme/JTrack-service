@@ -27,7 +27,13 @@ try:
         'linear_acceleration',
         'ema',
         'active_labeling',
-        'lockUnlock'
+        'lockUnlock',
+        # https://developer.corsano.com/android-sdk/sdk-reference/data-sdk/datasdk-manager
+        'corsano_metric_activity',
+        'corsano_metric_hrv',
+        'corsano_metric_ppg',
+        'corsano_metric_sleep',
+        'corsano_metric_temperature',
     ]
 
     storage_folder = '/mnt/jutrack_data'
