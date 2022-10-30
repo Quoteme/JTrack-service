@@ -55,4 +55,11 @@ ENV PYTHONPATH=/var/www/remsys.ai/www/dashboard
 ENV SERVER_URL=http://remsys.ai
 
 EXPOSE 80
-CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
+RUN echo "httpd -D FOREGROUND" >> /start.sh && \
+		echo "while true; do" >> /start.sh && \
+		echo "  echo 'running'" >> /start.sh && \
+		echo "  python3 /jutrack_csv_cronjob.py" >> /start.sh && \
+		echo "  sleep 5" >> /start.sh && \
+		echo "done" >> /start.sh && \
+		chmod +x /start.sh
+CMD ./start.sh

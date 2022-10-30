@@ -369,4 +369,5 @@ if __name__ == "__main__":
     except Exception as e:
         with open("/mnt/jutrack_data/jutrack_csv.log", "w") as log_file:
             log_file.write("An error occured during CSV creation at " + str(datetime.now()) + ":\n")
+            log_file.write(e.message + "\n")
             log_file.write(str(sys.exc_info()[0]))
