@@ -1,3 +1,4 @@
+mkdir -p ./Studies
 mkdir -p ./jutrack_data/studies
 mkdir -p ./jutrack_data/archive
 mkdir -p ./jutrack_data/users
