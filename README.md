@@ -2,6 +2,14 @@
 
 Is a collection of python scripts that serve as Endpoints to the jtrack app or are executed in cron jobs on the server side.
 
+# ⚠ Lucas Anmerkungen ⚠ 
+
+1. `git clone --recursive https://github.com/Quoteme/JTrack-service.git`
+2. `./JTrack-dashboard/security/passwd.csv` **nicht vergessen!**
+3. `Dockerfile`: `ENV SERVER_URL=192.168.178.31:8888/`
+4. Das selbe in der `./run.sh`.
+
+
 ## Overview
 JTrack services contains the following scripts:
 
